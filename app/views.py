@@ -29,8 +29,8 @@ def todayvisitors():
 @app.route('/addvisitor', methods = ['POST'])
 def addvisitor():
 	visitor = json.loads(request.data)
-	print 'visitor = ',visitor	
-	new_visitor = models.Visitors(price=int(visitor['price']))#, action=visitor['action'])
+#	print 'visitor = ',visitor	
+	new_visitor = models.Visitors(price=int(visitor['price']), action=visitor['action'])
 	db.session.add(new_visitor)
 	db.session.commit()
 	return 'Successes'
@@ -40,7 +40,7 @@ def releaseguest(guest_number):
 	guest = models.TodayVisitors.query.get(int(guest_number))
 	db.session.delete(guest)
 	db.session.commit()
-	return "Successes"
+	return "Success!:)"
 
 @app.route('/addguest', methods = ['POST'])
 def addguest():
@@ -48,4 +48,4 @@ def addguest():
 	new_guest = models.TodayVisitors(number=int(guest['number']), arrival_time=str(guest['arrival_time']))
 	db.session.add(new_guest)
 	db.session.commit()
-	return visitor['number']
+	return guest['number']
