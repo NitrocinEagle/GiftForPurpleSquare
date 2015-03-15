@@ -15,6 +15,7 @@ itsdangerous==0.24
 Jinja2==2.7.3
 MarkupSafe==0.23
 pbr==0.10.8
+psycopg2==2.6
 pytz==2014.10
 six==1.9.0
 speaklater==1.3
