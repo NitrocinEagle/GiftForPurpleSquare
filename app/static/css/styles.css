@@ -1,0 +1,45 @@
+#guest_container {
+	width: 735px;	
+	/*float:top;*/
+}
+	#guests_selector {
+		width: 145px;
+		/*border: 2px double black;*/
+		float:left;
+	}
+	#guests_log_list {
+		/*border: 2px inset black;*/
+		width: 590px;
+		float:left;
+	}
+
+#visitor_container {
+	width: 855px;	
+	/*margin-top: 20px;*/
+	/*float:top;*/
+}
+	#visitors_selector {
+		/*border: 2px inset black;*/
+		width: 370px;
+		/*float:top;*/
+	}
+		#visitors_selector_action {
+			/*border: 2px inset black;*/
+			width: 170px;
+			float:left;
+		}
+		#visitors_selector_price {
+			/*border: 2px inset black;*/
+			width: 120px;
+			float:left;
+		}
+	#visitors_log_list {
+		/*border: 2px inset black;*/		
+		width: 650px;		
+		margin-left: 145px;
+		float:left;
+	}	
+	#add_visitors_button {
+		width: 160px;
+		float:top;
+	}

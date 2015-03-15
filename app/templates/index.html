@@ -1,0 +1,303 @@
+<html>
+<head>
+	<title>Пурпурный Квардрат</title>	
+	<link href="/static/css/styles.css" rel="stylesheet">
+</head>
+<body>
+	<div id ="guest_container">
+		<!--<p>Добавление нового гостя (по тарифу)</p>-->
+		<div id="guests_selector">
+			<form action="">
+				<select id="guest_numbers_list" onchange="add_guest()">
+					<option selected>Выберите номер</option>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+				</select>
+			<form>
+		</div>
+	
+		<div id="guests_log_list">
+			<table border="1" id="guests_log_list_table">
+				<tr><td>Номер гостя</td><td>Время прибытия</td><td>Время присутствия</td><td>Стоимость</td><td>Остановить</td><tr>
+			</table>
+		</div>
+	</div>	
+	<div id="visitor_container">	
+		<!--<p>Добавление нового посетителя (на мероприятие)</p>-->
+		<div id="visitors_selector">
+			<br>
+			<form action="">
+				<div id="visitors_selector_action">
+					<!--<select id="visitor_actions_list" onchange="add_visitor()">
+						<option selected>Выберите мероприятие</option>
+						<option>Мафия</option>
+						<option>Квест</option>
+						<option>Вечер под гитару</option>
+						<option>Что-то еще</option>
+						<option>Лолка</option>
+						<option>Пряник</option>
+						<option>7</option>
+						<option>8</option>
+						<option>9</option>
+					</select>-->
+					<input type="text" value="Мероприятие" id="visitor_action_text">
+				</div>
+				<div id="visitors_selector_price">
+					<select id="visitor_prices_list">
+						<option selected>Выберите цену</option>
+						<option>50</option>
+						<option>100</option>
+						<option>150</option>
+						<option>200</option>
+						<option>250</option>
+						<option>300</option>
+						<option>350</option>
+						<option>400</option>
+						<option>450</option>
+					</select>
+				</div>
+			</form>
+		</div>
+		<div id="visitors_log_list">
+			<table border="1" id="visitors_log_list_table">
+				<tr><td>Номер гостя</td><td>Статус</td><td>Время прибытия</td><td>Время присутствия</td><td>Стоимость</td><td>Остановить</td><tr>
+			</table>
+		</div>
+		<div id="add_visitors_button">
+			<button type="button" onclick ="add_visitor()" id="add_visitors_button">Добавить мероприятие</button>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var visitors = new Array();
+		var guests = new Array();
+		var guests_numb = 0;
+		var visitors_numb = 2;
+		var STATUS_ATTENDANCE = 1;
+		var STATUS_LEFT = 2;
+		var MAXIMUM_PRICE = 350;
+
+		set_today_guests();
+		var timer = setInterval(view_guests, 1000);
+
+		function view_guests() {
+			var new_guest_id = document.getElementById("guests_log_list");
+			var HTML_guests_log_list = '<table border=\"1\"><tr><td>Номер гостя</td><td>Статус</td><td>Время прибытия</td><td>Время присутствия</td><td>Стоимость</td><td>Остановить</td><tr>';
+			for (var i = 0; i < guests_numb; i++) {
+					HTML_guests_log_list += '<tr><td>' + guests[i].guest_number + '</td><td>Гость</td><td>' + get_guest_arrival_time(i) + '</td><td>' + get_guest_attendance_time(i) + '</td><td>' + get_current_price(i) + ' рублей</td><td><button type=\"button\" onclick =\"release_guest(' + i + ')\" id=\"guest_number_' + guests[i].guest_number + '\">Стоп</button></td></tr>'; //<td><form id=\"' + guests[i].guest_number + '></form></td>
+			}
+			HTML_guests_log_list +=  '</table>';
+			new_guest_id.innerHTML = HTML_guests_log_list;
+			
+			var visitors_log_list = document.getElementById("visitors_log_list");
+			var HTML_visitors_log_list = '<table border=\"1\"><tr><td>Номер гостя</td><td>Статус</td><td>Время прибытия</td><td>Время присутствия</td><td>Стоимость</td><td>Остановить</td><tr>';
+			for (var i = 0; i < visitors_numb; i++) {
+					HTML_visitors_log_list += '<tr><td>' + /*visitors[i].visitor_number*/i + '</td><td>Гость</td><td>' + /*get_guest_arrival_time(i)*/"33:33:33" + '</td><td>' + "44:44:44"/*get_guest_attendance_time(i)*/ + '</td><td>' + 350/*get_current_price(i)*/ + ' рублей</td><td><button type=\"button\" onclick =\"release_guest(' + i + ')\" id=\"guest_number_' + guests[i].guest_number + '\">Стоп</button></td></tr>'; //<td><form id=\"' + guests[i].guest_number + '></form></td>
+			}
+			HTML_visitors_log_list +=  '</table>';
+			visitors_log_list.innerHTML = HTML_visitors_log_list;
+		}
+		
+		function add_guest() {
+			var guest_numbers_list = document.getElementById("guest_numbers_list");
+			var index = guest_numbers_list.selectedIndex;
+			var guest_numb = parseInt(guest_numbers_list[index].text);
+			
+			var val = "Выберите номер";
+			var opts = guest_numbers_list.options;
+			for (var opt, j = 0; opt = opts[j]; j++) {
+				if (opt.value == val) {
+					guest_numbers_list.selectedIndex = j;
+					break;
+				}
+			}
+
+			/*Если мы пытаемся "выдать" гостю номерок, который мы выдали ранее другому гостю, то такой номерок не может быть выдан! He shall not pass! */
+			var guestExist = true;
+			for (var i = 0; i < guests_numb; i++) {
+				if (guests[i].guest_number == guest_numb) {
+					guestExist = false;
+					alert("Эй, негодник! Ты что, пытался выдать гостю номерок, который у другого гостя?!"); 
+					break;
+				}
+			}
+			if (guestExist == true) {
+				guests[guests_numb] = new Object();
+				guests[guests_numb].guest_number = guest_numb;
+				guests[guests_numb].arrival_time = new Date();
+				guests[guests_numb].status = STATUS_ATTENDANCE;
+
+				var visitor = new Object();
+				visitor.number = String(guest_numb);
+				var hours = guests[guests_numb].arrival_time.getHours();
+				var minutes = guests[guests_numb].arrival_time.getMinutes();
+				var seconds = guests[guests_numb].arrival_time.getSeconds();
+				visitor.arrival_time = String("" + hours + ":" + minutes + ":" + seconds + "");
+
+				var request =  new XMLHttpRequest();
+				request.open('POST', '/addguest', false);
+				request.send(JSON.stringify(visitor));
+				//alert("Отправляем серверу: " + JSON.stringify(visitor));
+				//alert("Ответ сервера: " + request.responseText);
+				guests_numb++;
+			}
+		}
+
+		function get_guest_attendance_time(guest_id) {
+			var attendance_time = new Date();
+			var delta = attendance_time.getTime() - guests[guest_id].arrival_time.getTime();
+			var attendance_time_seconds = parseInt(Math.abs(delta / 1000) % 60);
+			var attendance_time_minutes = parseInt(Math.abs(delta / (1000*60)) % 60);
+			var attendance_time_hours =  parseInt((Math.abs(delta / (1000*3600))) % 60);
+			var str_attendance_time = attendance_time_hours + ":" + attendance_time_minutes + ":" + attendance_time_seconds;
+			return str_attendance_time;
+		}
+		
+		function get_guest_arrival_time(guest_id) {
+			var arrival_time = guests[guest_id].arrival_time;
+			var hours = arrival_time.getHours();
+			var minutes = arrival_time.getMinutes();
+			var seconds = arrival_time.getSeconds();
+			var str_arrival_time = hours + ":" + minutes + ":" + seconds;
+			return str_arrival_time;
+		}
+
+		function release_guest(guest_numb) {
+			var guest_number = guests[guest_numb].guest_number;
+			
+			var visitor = new Object();
+			visitor.number = String(guest_number);
+			visitor.price = String(get_current_price(guest_numb));
+			var hours = guests[guest_numb].arrival_time.getHours();
+			var minutes = guests[guest_numb].arrival_time.getMinutes();
+			var seconds = guests[guest_numb].arrival_time.getSeconds();
+			visitor.arrival_time = String("" + hours + ":" + minutes + ":" + seconds + "");
+			visitor.leaving_time = String("11:11:2015:11:11:11");
+			
+			for (var i = 0; i < guests_numb; i++)
+				guests[i] = null;
+			guests_numb = 0;
+			var request =  new XMLHttpRequest();
+			request.open('POST', '/releaseguest/' + String(guest_number), false);
+			request.send(null);
+			//alert("Отправляем серверу: " + guest_number);
+			//alert("Ответ сервера: " + request.responseText);
+			set_today_guests();
+				
+			var request2 =  new XMLHttpRequest();
+			request2.open('POST', '/addvisitor', false);
+			request2.send(JSON.stringify(visitor));
+			
+			alert("Отправляем серверу: " + JSON.stringify(visitor));
+			alert("Ответ сервера: " + request2.responseText);
+			//alert("Участник на мероприятие " + action + " зарегитрирован. Стоимость: " + price);
+		}
+
+		function get_current_price(guest_id) {
+			var attendance_time = new Date();
+			var delta = attendance_time.getTime() - guests[guest_id].arrival_time.getTime();
+			var current_price = (1.5 * Math.abs(delta / (1000*60)));//.toFixed(1);
+			if (parseInt(current_price) > parseInt(MAXIMUM_PRICE))
+				current_price = MAXIMUM_PRICE;
+			var rubles = Math.floor(current_price);
+			var kopecks = parseInt((current_price - rubles).toFixed(2)*100);
+			var str_current_price = rubles;// + ' рублей ';
+			return str_current_price;
+		}
+
+		function set_today_guests() {
+			var req =  new XMLHttpRequest();
+			req.open('POST', '/todayvisitors', false);
+			req.send(null);
+			//alert("Ответ сервера: " + req.responseText);
+			var response = JSON.parse(req.responseText);
+		
+			for (var i = 0; i < response.length; i++) {
+				guests[guests_numb] = new Object();				
+				guests[guests_numb].guest_number = parseInt(response[i].number);
+				guests[guests_numb].arrival_time = toTime(response[i].arrival_time);
+				guests[guests_numb].status = STATUS_ATTENDANCE;
+				guests_numb++;
+			}
+		}
+
+		function toTime(str_time) {
+		/* str_time is a string in format HH:MM:SS*/
+			var time = new Date();
+			var arr = str_time.split(":");
+			time.setHours(arr[0]);
+			time.setMinutes(arr[1]);
+			time.setSeconds(arr[2]);
+			return time;
+		}
+		
+		function add_visitor() {
+		//visitor_actions_list visitor_prices_list
+		//addin new options
+			/*var o = new Option("option text", "value");
+			document.getElementById("visitor_prices_list").add(o)*/
+			
+			//visitors_selector_price   visitor_action_text
+			
+			var action = document.getElementById("visitor_action_text").value;
+			
+			//var visitor_actions_list = document.getElementById("visitor_actions_list");
+			//var selectedAction = visitor_actions_list.selectedIndex;
+			//var action = visitor_actions_list[selectedAction].text;
+			
+			var visitor_prices_list = document.getElementById("visitor_prices_list");
+			var selectedPrice = visitor_prices_list.selectedIndex;
+			var price = visitor_prices_list[selectedPrice].text;
+			if (action != "Мероприятие" & price != "Выберите цену")
+			{
+				var visitor = new Object();
+				visitor.price = String(price);
+				visitor.action = String(action);
+
+				var request =  new XMLHttpRequest();
+				request.open('POST', '/addvisitor', false);
+				request.send(JSON.stringify(visitor));
+				//alert("Отправляем серверу: " + JSON.stringify(visitor));
+				//alert("Ответ сервера: " + request.responseText);
+				alert("Участник на мероприятие " + action + " зарегитрирован. Стоимость: " + price);
+				
+				document.getElementById("visitor_action_text").value = "Мероприятие";
+				/*var action_val = "Выберите мероприятие"; //Выберите мероприятие" & price != "Выберите цену")
+				var action_opts = visitor_actions_list.options;
+				for (var opt, j = 0; opt = action_opts[j]; j++) {
+					if (opt.value == action_val) {
+						visitor_actions_list.selectedIndex = j;
+						break;
+					}
+				}*/
+				var table = document.getElementById("visitors_log_list_table");
+				alert(table.rows());
+				var price_val = "Выберите цену";
+				var price_opts = visitor_prices_list.options;
+				for (var opt, j = 0; opt = price_opts[j]; j++) {
+					if (opt.value == price_val) {
+						visitor_prices_list.selectedIndex = j;
+						break;
+					}
+				}
+				
+			}
+			/*var val = "Выберите номер";
+			var opts = guest_numbers_list.options;
+			for (var opt, j = 0; opt = opts[j]; j++) {
+				if (opt.value == val) {
+					guest_numbers_list.selectedIndex = j;
+					break;
+				}
+			}*/
+		}
+	</script>
+</body>
+</html>
