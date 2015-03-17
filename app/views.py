@@ -20,12 +20,8 @@ def addtodayguest():
 	new_guest = models.TodayVisitors(number=int(visitor['number']), arrival_time=int(visitor['arrivalTime']))
 	db.session.add(new_guest)
 	db.session.commit()
-	return 'Посетитель (по тарифу) с номером ' + str(visitor['number']) + ' в список текущих посетителей добавлен. Время прибытия в мс: ' + str(visitor['arrivalTime'])
-	#else:
-		#new_visitor = models.TodayVisitors(action=visitor['action'], price = int(visitor['price']), arrival_time = int(visitor['arrivalTime']))
-#		db.session.add(new_visitor)
-#		db.session.commit()
-#		return u'Посетитель на мероприятие ' + visitor['action'] + u'добавлен в список текущих посетителей. Стоимость: ' + str(visitor['price']) + u' рублей.'
+	#return 'Посетитель (по тарифу) с номером ' + str(visitor['number']) + ' в список текущих посетителей добавлен. Время прибытия в мс: ' + str(visitor['arrivalTime'])
+	return '42'
 
 @app.route('/addtodayvisitor', methods = ['POST'])
 def addtodayvisitor():
@@ -33,7 +29,8 @@ def addtodayvisitor():
 	new_visitor = models.TodayVisitors(number = int(visitor['number']), action=visitor['action'], price = int(visitor['price']), arrival_time = int(visitor['arrivalTime']))
 	db.session.add(new_visitor)
 	db.session.commit()
-	return u'Посетитель на мероприятие ' + visitor['action'] + u'добавлен в список текущих посетителей. Стоимость: ' + str(visitor['price']) + u' рублей.'
+	return '42'
+	#return u'Посетитель на мероприятие ' + visitor['action'] + u'добавлен в список текущих посетителей. Стоимость: ' + str(visitor['price']) + u' рублей.'
 
 @app.route('/releaseguest/<guest_number>', methods = ['POST'])
 def releaseguest(guest_number):
@@ -41,9 +38,10 @@ def releaseguest(guest_number):
 	if guest != None:
 		db.session.delete(guest)
 		db.session.commit()
-		return "Счет цены гостя под номером " + str(guest_number) + " остановлен!"
-	else:
-		return "Гостя под номером " + str(guest_number) + " нет!"
+#		return "Счет цены гостя под номером " + str(guest_number) + " остановлен!"
+#	else:
+#		return "Гостя под номером " + str(guest_number) + " нет!"
+	return '42'
 
 
 @app.route('/todayvisitors', methods = ['POST'])
@@ -72,12 +70,14 @@ def addvisitor():
 		#db.session.add(new_visitor)
 		#db.session.commit()
 		print float(visitor['price'])# + ' ' + visitor['action'] + ' ' + visitor['number'] + ' ' + int(visitor['arrivalTime']) + ' ' + int(visitor['leavingTime'])
-	return 'Successes'
+#	return 'Successes'
+	return '42'
 	
 @app.route('/releasevisitor/<visitor_number>,<visitor_action>', methods = ['POST'])
 def releasevisitor(visitor_number, visitor_action):
 	visitor = models.TodayVisitors.query.filter_by(number=visitor_number).first()
-	return str(visitor.number) + u' ' + visitor.action
+	return '42'
+#	return str(visitor.number) + u' ' + visitor.action
 	#if guest != None:
 #		db.session.delete(guest)
 #		db.session.commit()
