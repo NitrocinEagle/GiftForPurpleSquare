@@ -20,8 +20,7 @@ def addtodayguest():
 	new_guest = models.TodayVisitors(number=int(visitor['number']), arrival_time=int(visitor['arrivalTime']))
 	db.session.add(new_guest)
 	db.session.commit()
-	#return 'Посетитель (по тарифу) с номером ' + str(visitor['number']) + ' в список текущих посетителей добавлен. Время прибытия в мс: ' + str(visitor['arrivalTime'])
-	return '42'
+	return 'Посетитель (по тарифу) с номером ' + str(visitor['number']) + ' в список текущих посетителей добавлен. Время прибытия в мс: ' + str(visitor['arrivalTime'])
 
 @app.route('/addtodayvisitor', methods = ['POST'])
 def addtodayvisitor():
@@ -29,19 +28,17 @@ def addtodayvisitor():
 	new_visitor = models.TodayVisitors(number = int(visitor['number']), action=visitor['action'], price = int(visitor['price']), arrival_time = int(visitor['arrivalTime']))
 	db.session.add(new_visitor)
 	db.session.commit()
-	return '42'
-	#return u'Посетитель на мероприятие ' + visitor['action'] + u'добавлен в список текущих посетителей. Стоимость: ' + str(visitor['price']) + u' рублей.'
+	return u'Посетитель на мероприятие ' + visitor['action'] + u'добавлен в список текущих посетителей. Стоимость: ' + str(visitor['price']) + u' рублей.'
 
 @app.route('/releaseguest/<guest_number>', methods = ['POST'])
 def releaseguest(guest_number):
 	guest = models.TodayVisitors.query.filter_by(number=guest_number).first()
-	if guest != None:
+	if not (guest is None):
 		db.session.delete(guest)
 		db.session.commit()
-#		return "Счет цены гостя под номером " + str(guest_number) + " остановлен!"
-#	else:
-#		return "Гостя под номером " + str(guest_number) + " нет!"
-	return '42'
+		return "Счет цены гостя под номером " + str(guest_number) + " остановлен!"
+	else:
+		return "Гостя под номером " + str(guest_number) + " нет!"
 
 
 @app.route('/todayvisitors', methods = ['POST'])
@@ -65,31 +62,32 @@ def todayvisitorsbytariff():
 @app.route('/addvisitor', methods = ['POST'])
 def addvisitor():
 	visitor = json.loads(request.data)
-	if (str(visitor['number']) != '0'):
-		#new_visitor = models.Visitors(price=float(visitor['price']), action=visitor['action'], number=visitor['number'], arrival_time = int(visitor['arrivalTime']), leaving_time = int(visitor['leavingTime']))
-		#db.session.add(new_visitor)
-		#db.session.commit()
-		print float(visitor['price'])# + ' ' + visitor['action'] + ' ' + visitor['number'] + ' ' + int(visitor['arrivalTime']) + ' ' + int(visitor['leavingTime'])
-#	return 'Successes'
-	return '42'
+	new_visitor = models.Visitors(price=float(visitor['price']), action=visitor['action'], number=int(visitor['number']), arrival_time = int(visitor['arrivalTime']), leaving_time = int(visitor['leavingTime']))
+	db.session.add(new_visitor)
+	db.session.commit()
+	return 'Success!'
 	
 @app.route('/releasevisitor/<visitor_number>,<visitor_action>', methods = ['POST'])
 def releasevisitor(visitor_number, visitor_action):
-	visitor = models.TodayVisitors.query.filter_by(number=visitor_number).first()
-	return '42'
-#	return str(visitor.number) + u' ' + visitor.action
-	#if guest != None:
-#		db.session.delete(guest)
-#		db.session.commit()
-#		return "Счет цены гостя под номером " + str(guest_number) + " остановлен!"
-#	else:
-#		return "Гостя под номером " + str(guest_number) + " нет!"
+	visitor = models.TodayVisitors.query.filter_by(number=visitor_number, action=visitor_action).first()
+	if not (visitor is None):
+		db.session.delete(visitor)
+		db.session.commit()
+		return u'Посетитель меропрития ' + visitor.action + u' с номером ' + str(visitor.number) + u' был удален'
+	return 'Ошибочка! Нет такого посетителя'
+
+@app.route('/allvisitors', methods = ['POST'])
+def allvisitors():
+	data = []
+	allVisitors = models.Visitors.query.all()
+	for visitor in allVisitors:
+		if visitor.action != "Guest":
+			data.append({'number' : str(visitor.number)})
+	print json.dumps(data)
+	return json.dumps(data)
 
 
-@app.route('/addguest', methods = ['POST'])
-def addguest():
-	guest = json.loads(request.data)
-	new_guest = models.TodayVisitors(number=int(guest['number']), arrival_time=str(guest['arrival_time']))
-	db.session.add(new_guest)
-	db.session.commit()
-	return guest['number']
+
+
+
+

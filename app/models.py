@@ -24,7 +24,7 @@ class TodayVisitors(db.Model):
 	
 class Visitors(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-	number = db.Column(db.Integer, primary_key = True, default=0)
+	number = db.Column(db.Integer, primary_key = False, default=0)
 	action = db.Column(db.String(64), primary_key = False, default="just guest")
 	arrival_time = db.Column(db.Integer, primary_key = False, default=0)
 	leaving_time = db.Column(db.Integer, primary_key = False, default=0)
