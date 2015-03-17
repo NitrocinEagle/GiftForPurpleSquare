@@ -1,5 +1,5 @@
 #guest_container {
-	width: 735px;	
+	width: 835px;	
 	/*float:top;*/
 }
 	#guests_selector {
@@ -9,7 +9,7 @@
 	}
 	#guests_log_list {
 		/*border: 2px inset black;*/
-		width: 590px;
+		/*width: 590px;*/
 		float:left;
 	}
 
@@ -35,7 +35,7 @@
 		}
 	#visitors_log_list {
 		/*border: 2px inset black;*/		
-		width: 650px;		
+		/*width: 650px;		*/
 		margin-left: 145px;
 		float:left;
 	}	
