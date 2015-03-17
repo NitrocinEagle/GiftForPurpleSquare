@@ -1,78 +1,3 @@
-<html>
-<head>
-	<title>Пурпурный Квардрат</title>	
-	<link href="/static/css/styles.css" rel="stylesheet">	
-</head>
-<body>
-	<!--<table border=2 id="debug">
-	</table>-->
-	<h1>В разработке...</h1>
-	<p id="todayIs"></p>
-	<div id ="guest_container">
-		<div id="guests_selector">
-			<form action="">
-				<select id="guest_numbers_list" onchange="addGuest(this)">
-					<option selected>Выберите номер</option>
-				</select>
-			<form>
-		</div>
-		<div id="guests_log_list">
-		</div>
-	</div>
-	<div id="visitor_container">	
-		<!--<p>Добавление нового посетителя (на мероприятие)</p>-->
-		<div id="visitors_selector">
-			<form action="" autocomplete="on" id="id">
-				<div id="visitors_selector_action">
-					<input type="text" value="Мероприятие" id="visitor_action_text">
-				</div>
-				<div id="visitors_selector_price">
-					<select id="visitor_prices_list">
-						<option selected>Выберите цену</option>
-					</select>
-				</div>
-			</form>
-		</div>
-		<div id="visitors_log_list">
-		</div>
-		<div id="add_visitors_button">
-			<button type="button" onclick ="addVisitor()" id="add_visitors_button">Добавить мероприятие</button>
-		</div>
-	</div>
-
-	<script type="text/javascript" src="/static/scripts/magic.js">
-	</script>
-	<script magic>
-		/* Guests - посетители анти-кафе, которые приходят по тарифу (1.5 руб./минута) */
-		/* Visitors - посетители анти-кафе, которые приходят на мероприятие */
-		var GUESTS_NUMB = 0;
-		var VISITORS_NUMB = 0;
-		var STATUS_ATTENDANCE = 1;
-		var visitors = getTodayVisitors();
-		var guests = getTodayGuests();
-		var numbers = setNumbersOptions();
-		var timer = setInterval(view, 1000);
-		var TODAY_MAXIMUM_CHECK = getTodayMaxCheck();
-		var numberOfVisitors = getNumberOfVisitors();
-		setTodayDate();
-		setPriceOptions();
-	</script>
-	<!--<script type="text/javascript">
-		/* Guests - посетители анти-кафе, которые приходят по тарифу (1.5 руб./минута) */
-		/* Visitors - посетители анти-кафе, которые приходят на мероприятие */
-		var GUESTS_NUMB = 0;
-		var VISITORS_NUMB = 0;
-		var STATUS_ATTENDANCE = 1;
-		var visitors = getTodayVisitors();
-		var guests = getTodayGuests();
-		var numbers = setNumbersOptions();
-		var timer = setInterval(view, 1000);
-		var TODAY_MAXIMUM_CHECK = getTodayMaxCheck();
-		var numberOfVisitors = getNumberOfVisitors();
-		setTodayDate();
-		setPriceOptions();
-		
-		
 		function view() {
 			var guestsLogList = document.getElementById("guests_log_list");
 			var HTMLGuestsLogList = '<table border=\"1\"><tr><td>Номер гостя</td><td>Статус</td><td>Время прибытия</td><td>Время присутствия</td><td>Стоимость</td><td>Остановить</td><tr>';
@@ -415,6 +340,4 @@
 			//alert(todayIs);
 			todayIs.innerHTML = date.toLocaleDateString() + " " + date.toTimeString();
 		}
-	</script>-->
-</body>
-</html>
+	
