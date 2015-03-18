@@ -20,12 +20,12 @@ class TodayVisitors(db.Model):
 	number = db.Column(db.Integer, primary_key = False, default=0)
 	action = db.Column(db.String(64), primary_key = False, default="just guest")
 	price = db.Column(db.Integer, primary_key = False, default=0)
-	arrival_time = db.Column(db.BigInteger, primary_key = False)
+	arrival_time = db.Column(db.String(16), primary_key = False)
 	
 class Visitors(db.Model):
 	id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 	number = db.Column(db.Integer, primary_key = False, default=0)
-	action = db.Column(db.String(64), primary_key = False, default="just guest")
-	arrival_time = db.Column(db.BigInteger, primary_key = False, default=0)
-	leaving_time = db.Column(db.BigInteger, primary_key = False, default=0)
+	action = db.Column(db.String(64), primary_key = False, default="Guest")
+	arrival_time = db.Column(db.String(16), primary_key = False)
+	leaving_time = db.Column(db.String(16), primary_key = False)
 	price = db.Column(db.Float, primary_key = False, default=0)

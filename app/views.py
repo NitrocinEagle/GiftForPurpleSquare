@@ -18,7 +18,8 @@ def addtodayguest():
 	visitor = json.loads(request.data)
 	#if int(visitor['number']) != 0:
 	print request.data
-	new_guest = models.TodayVisitors(number=int(visitor['number']), arrival_time=long(visitor['arrivalTime']))
+	print visitor
+	new_guest = models.TodayVisitors(number=int(visitor['number']), arrival_time=str(visitor['arrivalTime']))
 	db.session.add(new_guest)
 	db.session.commit()
 	return 'Посетитель (по тарифу) с номером ' + str(visitor['number']) + ' в список текущих посетителей добавлен. Время прибытия в мс: ' + str(visitor['arrivalTime'])
@@ -26,7 +27,7 @@ def addtodayguest():
 @app.route('/addtodayvisitor', methods = ['POST'])
 def addtodayvisitor():
 	visitor = json.loads(request.data)
-	new_visitor = models.TodayVisitors(number = int(visitor['number']), action=visitor['action'], price = int(visitor['price']), arrival_time = long(visitor['arrivalTime']))
+	new_visitor = models.TodayVisitors(number = int(visitor['number']), action=visitor['action'], price = int(visitor['price']), arrival_time = str(visitor['arrivalTime']))
 	db.session.add(new_visitor)
 	db.session.commit()
 	return u'Посетитель на мероприятие ' + visitor['action'] + u'добавлен в список текущих посетителей. Стоимость: ' + str(visitor['price']) + u' рублей.'
@@ -63,7 +64,7 @@ def todayvisitorsbytariff():
 @app.route('/addvisitor', methods = ['POST'])
 def addvisitor():
 	visitor = json.loads(request.data)
-	new_visitor = models.Visitors(price=float(visitor['price']), action=visitor['action'], number=int(visitor['number']), arrival_time = long(visitor['arrivalTime']), leaving_time = long(visitor['leavingTime']))
+	new_visitor = models.Visitors(price=float(visitor['price']), action=visitor['action'], number=int(visitor['number']), arrival_time = str(visitor['arrivalTime']), leaving_time = str(visitor['leavingTime']))
 	db.session.add(new_visitor)
 	db.session.commit()
 	return 'Success!'
