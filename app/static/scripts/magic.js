@@ -140,7 +140,7 @@
 				
 				var guest = new Object();
 				guest.number = String(guests[GUESTS_NUMB].number);
-				guest.arrivalTime = guests[GUESTS_NUMB].arrivalTime.getTime();//getArrivalTime(guests[GUESTS_NUMB].arrivalTime);
+				guest.arrivalTime = String(guests[GUESTS_NUMB].arrivalTime.getTime());//getArrivalTime(guests[GUESTS_NUMB].arrivalTime);
 				
 				var request =  new XMLHttpRequest();
 				request.open('POST', '/addtodayguest', false);
@@ -267,7 +267,7 @@
 				visitors[VISITORS_NUMB] = new Object();
 				visitors[VISITORS_NUMB].number = parseInt(JSONVisitors[i].number);
 				visitors[VISITORS_NUMB].price = parseInt(JSONVisitors[i].price);
-				visitors[VISITORS_NUMB].action = JSONVisitors[i].action;
+				visitors[VISITORS_NUMB].action = String(JSONVisitors[i].action);
 				visitors[VISITORS_NUMB].arrivalTime = new Date();
 				visitors[VISITORS_NUMB].arrivalTime.setTime(parseInt(JSONVisitors[i].arrivalTime));
 				VISITORS_NUMB++;
