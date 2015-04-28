@@ -1,45 +1,356 @@
-#guest_container {
-	width: 835px;	
-	/*float:top;*/
+body, html {
+	background-image: url("/static/images/backgrnd.jpg");
+	background-size: 80%, 100%;
+	margin:0px;
+	padding:0px;
+	
 }
-	#guests_selector {
-		width: 145px;
-		/*border: 2px double black;*/
-		float:left;
+#container_top {
+	width: 100%;
+	height: 25px;
+	background-color: #F50;
+	/*background:-o-linear-gradient(bottom, #ffaa13 5%, #ffba9a 100%);
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffaa13), color-stop(1, #ffba9a) ); 
+	background:-moz-linear-gradient( center top, #ffaa13 5%, #ffba9a 100% );*/
+}
+
+#todayIs {
+	position: absolute;
+	right: 40%;
+	top: 0;
+	width: 100%
+	text-align: center;
+}
+#user_panel {
+	position: absolute;
+	left: 80%;
+	top: 0%;
+	width: 20%;
+	text-align: left;
+}
+
+#container_center {
+	width: 50%;
+	margin-left:25%;
+}
+
+#add_visitor_tariff {
+	background-image: url("/static/images/panel.jpg");
+	background-size: 40%, 100%;
+	width: 48%;
+	margin-left:26%;
+	height: 145px;
+	border: 5px outset #ffaa13;
+	border-radius: 15px 15px 15px 15px;
+}
+.number {
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	position: absolute;
+	text-align: center;
+	line-height: 30px; /* Выравниние по центру(по вертикали). То же значение, что и в height. */
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#add_action {
+	background-image: url("/static/images/panel.jpg");
+	background-size: 60%, 100%;
+	text-align: center;
+	width: 32%;
+	margin-left: 34%;
+	border: 5px outset #ffaa13;
+	border-radius: 15px 15px 15px 15px;
+}
+#add_action_button {
+	text-align: right;
+	width: 90%;
+	margin-right: 10%;
+}
+.class_action_log {
+		position:relative; 
+		width: 60%;
+		margin-left: 20%;
+		border-width:0px 0px 1px 10px;
+		border-color: green;
+}
+.class_action_log_table {
+	text-align: center;
+	border-width: 3px;
+	border-style: ridge;
+	border-color: #8a8a8a; 
+	padding: 0;
+	border-spacing: 0;
+	width: 50%;
+	margin-left: 25%;
+}
+.action_buttons_block {
+	position:relative; 
+	text-align: right;
+	top: 10px; 
+	width: 50%;
+	margin-left: 25%;
+	
+}
+.action_total_price_block {
+	position:relative; 
+	text-align: left;
+	top: 15px; 
+	width: 50%;
+	margin-left: 25%;
+}
+
+#visitors_tariff_log_container {
+	
+	width: 100%;
+}
+
+#visitors_tariff_log_caption {
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	color: #ffa500;
+	text-shadow: 2px 1px 10px #b2b2b2;
+}
+
+#visitors_tariff_log_table {
+	width: 42%;
+	margin-left: 29%;
+}
+
+#visitors_tariff_log_total_price {
+	font-size: 18px;
+	width: 42%;
+	margin-left: 29%;
+}
+
+#add_visitor_action_log {
+	/*background-color:#303070;*/
+	width: 100%;
+}
+
+
+#container_right {
+	width: 55%;
+	margin-left: 45%;
+}
+
+#released_visitors_log {
+	/*background-color: yellow;*/
+	width: 100%;
+}
+
+
+
+#container_floor {
+	width: 100%;
+	color: white;
+	background-color:#F50;
+	margin:0px;
+	padding:0px;
+	clear: both;
+}
+
+	#container_floor_info {
+		position: relative;
+		left: 0;
+		width: 20%;
+		float: left;
 	}
-	#guests_log_list {
-		/*border: 2px inset black;*/
-		/*width: 590px;*/
-		float:left;
+	
+		#count_today_visittors {
+			text-align: right;
+			position: relative;
+			left: 0;
+			width: 100%;
+			height: 20px;
+			float: top;
+		}
+		#daily_profit {
+			text-align: right;
+			position: relative;
+			left: 0;
+			width: 100%;
+			height: 20px;
+			float: top;
+		}
+	
+		#end_session {
+			text-align: right;
+			position: relative;
+			left: 0;
+			width: 100%;
+			height: 20px;
+		}
+
+		#cash_desk {
+			position: relative;
+			left: 15%;
+			top: 0;
+			width: 60%;
+			height: 80px;
 	}
 
-#visitor_container {
-	width: 855px;	
-	/*margin-top: 20px;*/
-	/*float:top;*/
+	.textStyleCaption {
+		text-align: center;
+		font-weight: bold;
+		font-size: 20px;
+		color: #ffa500;
+		text-shadow: 2px 1px 10px #b2b2b2;
+	}
+	
+	.textStyle {
+		font-size: 16px;
+		font-weight: bold;
+		color: #d8d8d8;
+	}
+	.textStyle2 {
+		font-size: 18px;
+		font-weight: bold;
+		color: #c2c2c2;
+	}
+	
+	.th1 {
+		text-align: center;
+		font-size: 14px;
+		font-weight: bold;
+		color: black;
+		/*background-color: #ffaa13;*/
+		background-color: #f50;
+	}
+	.tr1 {
+		text-align: center;
+		color: black;
+		background-color: #ffb548;
+	}
+	
+	.tr2 {
+		text-align: center;
+		color: black;
+		background-color: #b5b5b5;
+	}
+	
+	.tableStyle1 {
+		text-align: center;
+		border-width: 3px;
+		border-style: ridge;
+		border-color: #8a8a8a; 
+		padding: 0;
+		border-spacing: 0;
+	}
+	a {
+		color: white;
+	}
+	a:hover {
+		color: black;
+	}
+	
+	
+#cash_log {
+	
 }
-	#visitors_selector {
-		/*border: 2px inset black;*/
-		width: 370px;
-		/*float:top;*/
-	}
-		#visitors_selector_action {
-			/*border: 2px inset black;*/
-			width: 170px;
-			float:left;
-		}
-		#visitors_selector_price {
-			/*border: 2px inset black;*/
-			width: 120px;
-			float:left;
-		}
-	#visitors_log_list {
-		/*border: 2px inset black;*/		
-		/*width: 650px;		*/
-		margin-left: 145px;
-		float:left;
-	}	
-	#add_visitors_button {
-		width: 160px;
-		float:top;
-	}
+
+#cash_log_caption {
+ text-align: center;
+}
+
+/*#input_add_action, select, textarea {*/
+.input_add_action {
+	margin: 0.1em; 
+	width:15em; 
+	border-radius:5px; 
+	border: solid 1px #f50; 
+	padding:0.2em; 
+	background-color: #f5f5f5; 
+	box-shadow: inset 0 2px 3px rgba(0,0,0,0.4);
+}
+.input_add_action:focus {
+	border: solid 2px #f50; 
+}
+
+.button_add_action {
+	border: solid 1px #aaa; 
+	padding:0.4em 0.7em; 
+	color:white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #f50;
+	cursor: pointer;
+	text-align: center;
+}
+
+.button_action_log {
+	border: solid 1px #aaa; 
+	padding:0.3em 0.6em; 
+	color:white;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #f50;
+	cursor: pointer;
+	text-align: center;
+}
+
+.button_tariff_visitor_stop {
+	border: solid 1px #aaa; 
+	width: 100%;
+	padding:0.3em 0.3em; 
+	color:white;
+	background-color: #f00;
+	cursor: pointer;
+	text-align: center;
+}
+
+.input_action_log_price {
+	margin: 0; 
+	width: 100%; 
+	border: solid 1px #f50; 
+	padding: 0.06em; 
+	background-color: #f5f5f5; 
+	box-shadow: inset 0 2px 3px rgba(0,0,0,0.2);
+}
+
+.input_comment {
+	margin: 0; 
+	width: 100%;
+	border: solid 1px #f50; 
+	padding:0.1em; 
+	background-color: #f5f5f5; 
+	box-shadow: inset 0 2px 3px rgba(0,0,0,0.2);
+}
+
+.button_cash {
+	border: solid 1px #555; 
+	padding:0.3em 0.6em; 
+	color: black;
+	width: 100%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	background-color: white;
+	cursor: pointer;
+	text-align: center;	
+}
+
+.input_cash {
+	border: solid 1px #555; 
+	padding:0.3em 0.6em; 
+	color: black;
+	width: 100%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px;
+	background-color: white;
+	box-shadow: inset 0 2px 3px rgba(0,0,0,0.3);
+	text-align: center;	
+}

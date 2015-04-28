@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Login</title>
+	</head>
+	<body>
+		<h2 align="center">Добро пожаловать в систему учета гостей анти-кафе "Пурпурный Квадрат"!</h2>
+		<div>
+			1. Введите имя пользователя<br> 
+			2. Введите пароль<br> 
+			3. Введите сумму, которая находится на данный момент в кассе (сумма сохраняется однажды - при открытии смены)<br> 
+			4. Откройте смену
+		</div>
+		<div style="width: 430px;  position: relative; left: 50%; margin: 0 0 0 -185px; background-color: #7f787d;">
+			<form action="" method="post" name="login">
+				{{ form.hidden_tag() }}
+				<table borded="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="185px">Пользователь: </td> <td>{{form.username}}</td>
+					</tr>
+					<tr>
+						<td>Пароль: </td> <td>{{form.password}}</td>
+					</tr>
+					<tr>
+						<td>Количество денег в кассе: </td> <td>{{form.money_in_cash}} руб.</td>
+					</tr>
+					<tr>
+						<td>Сегодняшний максимальный чек: </td> <td>{{form.max_check}} руб.</td>
+					</tr>
+					<tr>
+						<td colspan="2"><br></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center"><input type="submit" value="Открыть смену"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+			{% if error == 'true' %}
+				<p class="error"><strong>Неверный логин и(или) пароль. Попробуйте еще раз</strong>
+			{% endif %}
+	</body>
+</html>

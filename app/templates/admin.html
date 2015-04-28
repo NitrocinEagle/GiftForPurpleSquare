@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Панель администратора</title>
+		<link href="/static/css/styles.css" rel="stylesheet">	
+		<script type="text/javascript" src="/static/scripts/magic.js"></script>
+		<script type="text/javascript" src="/static/scripts/admin.js"></script>
+	</head>
+	<body>
+		<div>
+			<form>
+				<font class="textStyle2"><p>Показать статистику за период:
+					<br>ОТ <input id="dateFROM" type="text" placeholder="дд.мм.гггг"> <input id="timeFROM" type="text" placeholder="чч:мм">
+					<br>ДО <input id="dateTO" type="text" placeholder="дд.мм.гггг"> <input id="timeTO" type="text" placeholder="чч:мм">
+					<br><input type="button" value="Показать статистику" onclick="showStatistic()">
+					<input type="button" value="Оформить отчет" onclick="makeReport()">
+				</p>
+				</font>
+			</form>
+			<p><font class="textStyle2">Очень рекомендуется оставлять все как есть. Если оставить все как есть, формируется отчет по текущей смене( что в общем-то и требуется).
+			Менять даты и время следует ради того, чтобы просто посмотреть статистику за любой период, не формируя отчет(в таком случает он может получиться корявым)
+			P.S.: Если смена на этом закончена, не забудьте вернуться на главную страницу и закрыть смену.</font></p>
+		</div>
+		
+		<div id="statistic">
+		</div>
+		
+		
+		<script type="text/javascript"> setTimesFromTo(); showStatistic() </script>
+	</body>
+</html>

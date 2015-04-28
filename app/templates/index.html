@@ -2,419 +2,197 @@
 <head>
 	<title>Пурпурный Квардрат</title>	
 	<link href="/static/css/styles.css" rel="stylesheet">	
+	<script type="text/javascript" src="/static/scripts/magic.js"></script>
 </head>
 <body>
-	<!--<table border=2 id="debug">
-	</table>-->
-	<h1>В разработке...</h1>
-	<p id="todayIs"></p>
-	<div id ="guest_container">
-		<div id="guests_selector">
-			<form action="">
-				<select id="guest_numbers_list" onchange="addGuest(this)">
-					<option selected>Выберите номер</option>
-				</select>
-			<form>
+<div id="container_top">
+		<div id="todayIs">
 		</div>
-		<div id="guests_log_list">
+		<div id="separator_date_user">
+		</div>
+		<div id="user_panel">
+			<font size="3" color="white">Администратор: <i>{{administrator}}</i>
+			{% if admin %}
+				<a href='/admin'> [Панель админа]</a>
+			{% endif %}
+			</font>
+		</div>
+</div>
+<br>
+<div id="#container_center">
+	<div id="add_visitor_tariff">
+		<div style="text-align: center;"><font class="textStyleCaption">Добавить посетителя</font></div>
+		<div style="width: 100%;">
+			<div id="number_55" class="number" style="margin-left: 10px; " onclick="addVisitorTariff(this)">55</div>
+			<div id="number_56" class="number" style="margin-left: 45px; " onclick="addVisitorTariff(this)">56</div>
+			<div id="number_57" class="number" style="margin-left: 80px; "  onclick="addVisitorTariff(this)">57</div>
+			<div id="number_58" class="number" style="margin-left: 115px; " onclick="addVisitorTariff(this)">58</div>
+	
+			<div id="number_59" class="number" style="margin-left: 150px; " onclick="addVisitorTariff(this)">59</div>
+			<div id="number_60" class="number" style="margin-left: 185px; " onclick="addVisitorTariff(this)">60</div>
+			<div id="number_61" class="number" style="margin-left: 220px; " onclick="addVisitorTariff(this)">61</div>
+			<div id="number_62" class="number" style="margin-left: 255px; " onclick="addVisitorTariff(this)">62</div>
+
+			<div id="number_63" class="number" style="margin-left: 290px; " onclick="addVisitorTariff(this)">63</div>
+			<div id="number_64" class="number" style="margin-left: 325px; " onclick="addVisitorTariff(this)">64</div>
+			<div id="number_65" class="number" style="margin-left: 360px; " onclick="addVisitorTariff(this)">65</div>
+			<div id="number_66" class="number" style="margin-left: 395px; " onclick="addVisitorTariff(this)">66</div>
+
+			<div id="number_67" class="number" style="margin-left: 430px; " onclick="addVisitorTariff(this)">67</div>
+			<div id="number_68" class="number" style="margin-left: 465px; " onclick="addVisitorTariff(this)">68</div>
+			<div id="number_69" class="number" style="margin-left: 500px; " onclick="addVisitorTariff(this)">69</div>
+			<div id="number_70" class="number" style="margin-left: 535px; " onclick="addVisitorTariff(this)">70</div>
+			
+			<div id="number_71" class="number" style="margin-left: 570px; " onclick="addVisitorTariff(this)">71</div>
+			<div id="number_72" class="number" style="margin-left: 605px; " onclick="addVisitorTariff(this)">72</div>
+
+			<div id="number_73" class="number" style="margin-left: 10px; margin-top: 35px; " onclick="addVisitorTariff(this)">73</div>
+			<div id="number_74" class="number" style="margin-left: 45px; margin-top: 35px; " onclick="addVisitorTariff(this)">74</div>
+			<div id="number_75" class="number" style="margin-left: 80px; margin-top: 35px; " onclick="addVisitorTariff(this)">75</div>
+			<div id="number_76" class="number" style="margin-left: 115px; margin-top: 35px; " onclick="addVisitorTariff(this)">76</div>
+
+			<div id="number_77" class="number" style="margin-left: 150px; margin-top: 35px; " onclick="addVisitorTariff(this)">77</div>
+			<div id="number_78" class="number" style="margin-left: 185px; margin-top: 35px; " onclick="addVisitorTariff(this)">78</div>
+			<div id="number_79" class="number" style="margin-left: 220px; margin-top: 35px; " onclick="addVisitorTariff(this)">79</div>
+			<div id="number_80" class="number" style="margin-left: 255px; margin-top: 35px; " onclick="addVisitorTariff(this)">80</div>
+
+			<div id="number_81" class="number" style="margin-left: 290px; margin-top: 35px; " onclick="addVisitorTariff(this)">81</div>
+			<div id="number_82" class="number" style="margin-left: 325px; margin-top: 35px; " onclick="addVisitorTariff(this)">82</div>
+			<div id="number_83" class="number" style="margin-left: 360px; margin-top: 35px; " onclick="addVisitorTariff(this)">83</div>
+			<div id="number_84" class="number" style="margin-left: 395px; margin-top: 35px; " onclick="addVisitorTariff(this)">84</div>
+
+			<div id="number_85" class="number" style="margin-left: 430px; margin-top: 35px; " onclick="addVisitorTariff(this)">85</div>
+			<div id="number_86" class="number" style="margin-left: 465px; margin-top: 35px; " onclick="addVisitorTariff(this)">86</div>
+			<div id="number_87" class="number" style="margin-left: 500px; margin-top: 35px; " onclick="addVisitorTariff(this)">87</div>
+			<div id="number_88" class="number" style="margin-left: 535px; margin-top: 35px; " onclick="addVisitorTariff(this)">88</div>
+			<div id="number_89" class="number" style="margin-left: 570px; margin-top: 35px; " onclick="addVisitorTariff(this)">89</div>
+			<div id="number_90" class="number" style="margin-left: 605px; margin-top: 35px; " onclick="addVisitorTariff(this)">90</div>
+
+			<div id="number_91" class="number" style="margin-left: 10px; margin-top: 70px; " onclick="addVisitorTariff(this)">91</div>
+			<div id="number_92" class="number" style="margin-left: 45px; margin-top: 70px; " onclick="addVisitorTariff(this)">92</div>
+			<div id="number_93" class="number" style="margin-left: 80px; margin-top: 70px; " onclick="addVisitorTariff(this)">93</div>
+			<div id="number_94" class="number" style="margin-left: 115px; margin-top: 70px; " onclick="addVisitorTariff(this)">94</div>
+
+			<div id="number_95" class="number" style="margin-left: 150px; margin-top: 70px; " onclick="addVisitorTariff(this)">95</div>
+			<div id="number_96" class="number" style="margin-left: 185px; margin-top: 70px; " onclick="addVisitorTariff(this)">96</div>
+			<div id="number_97" class="number" style="margin-left: 220px; margin-top: 70px; " onclick="addVisitorTariff(this)">97</div>
+			<div id="number_98" class="number" style="margin-left: 255px; margin-top: 70px; " onclick="addVisitorTariff(this)">98</div>
+			<div id="number_99" class="number" style="margin-left: 290px; margin-top: 70px; " onclick="addVisitorTariff(this)">99</div>
 		</div>
 	</div>
-	<div id="visitor_container">	
-		<!--<p>Добавление нового посетителя (на мероприятие)</p>-->
-		<div id="visitors_selector">
-			<form action="" autocomplete="on" id="id">
-				<div id="visitors_selector_action">
-					<input type="text" value="Мероприятие" id="visitor_action_text">
-				</div>
-				<div id="visitors_selector_price">
-					<select id="visitor_prices_list">
-						<option selected>Выберите цену</option>
-					</select>
+
+	<br>
+	
+	<div id="add_action">
+		<font class="textStyleCaption">Добавить мероприятие</font>
+			<form id="form_add_action">
+				<table align="center" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td><font class="textStyle">Мероприятие: </font></td>	<td><input size="28" class="input_add_action" placeholder="Введите название мероприятия" name="action_name"/></td>
+					</tr>
+					<tr>
+						<td><font class="textStyle">Время:</font></td>	<td><input size="5" maxLength="5" class="input_add_action" placeholder="ЧЧ:ММ" name="start_time"/></td>
+					</tr>
+					<tr>
+						<td><font class="textStyle">Цена:</font></td>	<td><input type="number"  size="3" step="50" min="0" value="0" class="input_add_action" name="price"/><font class="textStyle"> руб.</font></td>
+					</tr>
+					<tr>
+						<td><font class="textStyle">Кол-во участников:</font></td>	<td><input type="number" value="1" min="0" class="input_add_action" name="participants_count"/></td>
+					</tr>
+					<tr>
+						<td><font class="textStyle">По тарифу:</font></td>	<td><input type="checkbox"  name="checkbox_tariff"/></td>
+					</tr>
+				</table>
+				<div id="add_action_button">
+					<button type="button" class="button_add_action" onclick="addAction()">Добавить</button>
 				</div>
 			</form>
-		</div>
-		<div id="visitors_log_list">
-		</div>
-		<div id="add_visitors_button">
-			<button type="button" onclick ="addVisitor()" id="add_visitors_button">Добавить мероприятие</button>
-		</div>
 	</div>
 
-	<script type="text/javascript" src="/static/scripts/magic.js">
-	</script>
+	<hr width="75%" color="#ffa500">
+	
+	<div id="visitors_tariff_log_container">
+		<div id="visitors_tariff_log_caption">Посетители по тарифу (1.5 руб./мин.)</div>
+			<table align="center" border="1" cellpadding="0" cellspacing="0" id="visitors_tariff_log_table">
+				<tr class="th1">
+					<td>Номерок</td>	<td>Время прибытия</td>	<td width="50px">Время присутствия</td>	<td>Стоимость</td>	<td>Комментарий</td>	<td>Стоп</td>
+				</tr>
+			</table>
+		<div id="visitors_tariff_log_total_price"></div>
+	</div>
+	
+	<br>
+	<hr width="75%" color="#ffa500">
+	
+	<div id="action_log">
+		<div style="text-align: center;"><font class="textStyleCaption">Мероприятия</font></div>
+	</div>
+	
+	<br>
+	<hr width="75%" color="#ffa500">
+	
+	<div id="released_visitors_log">
+	</div>	
+	<br>
+	<hr width="75%" color="#ffa500">
+	
+	<div id="cash_log">
+		<div id="cash_log_caption">
+			<font class="textStyleCaption">Операции с кассой</font>
+		</div>
+		<table width="50%" id="cash_log_table" align="center" border="1" class="tableStyle1">
+		</table>
+	</div>
+</div>
+
+<br>
+
+<div id="container_floor">
+	<div id="container_floor_info">
+		<div id="count_today_visittors">
+			<div >Сегоня нас посетило <i id="count_released_visitors"></i> человек</div>
+		</div>
+		<div id="daily_profit">
+			Сегодняшняя выручка <i id="today_income"></i> рублей
+		</div>	
+		<div id="end_session">
+			<button class="button_cash" onclick="endSession()">Закончить смену</button>
+		</div>
+	</div>
+	<div id="cash_desk">
+		<div style="text-align: center;">На текущий момент в кассе <i id="current_money_in_cash"></i> руб.<br>
+			<form id="cash_desk_form">
+				<table align="center" border="0">
+					<tr>
+						<td><input type="number"  size="4" min="0" step="50" class="input_cash" placeholder="Сумма"/> </td>	<td> <input type="text" size="20" class="input_cash" placeholder="Комментарий"/></td><td><input type="button" class="button_cash" size="8" value="Добавить" onclick="moneyCash('add')" /><br><input type="button" class="button_cash" value="Снять" size="8" onclick="moneyCash('withdraw')"/></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>
+
 	<script magic>
-		/* Guests - посетители анти-кафе, которые приходят по тарифу (1.5 руб./минута) */
-		/* Visitors - посетители анти-кафе, которые приходят на мероприятие */
-		var GUESTS_NUMB = 0;
+		document.getElementById("count_released_visitors").innerHTML = parseInt(getCountTodayReleasedVisitors());
+		document.getElementById("current_money_in_cash").innerHTML = getCurrentMoneyInCash();
+		document.getElementById("today_income").innerHTML = parseInt(getTodayIncome());
+		var DEBUG = false;
+		var VISITORS_TARIFF_NUMB = 0;
 		var VISITORS_NUMB = 0;
-		var STATUS_ATTENDANCE = 1;
-		var visitors = getTodayVisitors();
-		var guests = getTodayGuests();
-		var numbers = setNumbersOptions();
-		var timer = setInterval(view, 1000);
+		var actions = getCurrentActions();
+		initActionLog(actions);
+		
+		var visitorsTariff = getTodayVisitorsTariff();
+		generateTodayVisitorsTariffTable(visitorsTariff);
+		setNumbers(visitorsTariff);
+		var timer1 = setInterval(view, 5000);
+		var timer2 = setInterval(update, 1000);
+		var timer3 = setInterval(updateActions, 60000);
 		var TODAY_MAXIMUM_CHECK = getTodayMaxCheck();
-		var numberOfVisitors = getNumberOfVisitors();
 		setTodayDate();
-		setPriceOptions();
+		viewReleasedVisitors();
+		viewCashLog();
+		updateActions();
 	</script>
-	<!--<script type="text/javascript">
-		/* Guests - посетители анти-кафе, которые приходят по тарифу (1.5 руб./минута) */
-		/* Visitors - посетители анти-кафе, которые приходят на мероприятие */
-		var GUESTS_NUMB = 0;
-		var VISITORS_NUMB = 0;
-		var STATUS_ATTENDANCE = 1;
-		var visitors = getTodayVisitors();
-		var guests = getTodayGuests();
-		var numbers = setNumbersOptions();
-		var timer = setInterval(view, 1000);
-		var TODAY_MAXIMUM_CHECK = getTodayMaxCheck();
-		var numberOfVisitors = getNumberOfVisitors();
-		setTodayDate();
-		setPriceOptions();
-		
-		
-		function view() {
-			var guestsLogList = document.getElementById("guests_log_list");
-			var HTMLGuestsLogList = '<table border=\"1\"><tr><td>Номер гостя</td><td>Статус</td><td>Время прибытия</td><td>Время присутствия</td><td>Стоимость</td><td>Остановить</td><tr>';
-			for (var i = 0; i < GUESTS_NUMB; i++) {
-				HTMLGuestsLogList += '<tr><td>' + guests[i].number + '</td><td>Гость</td><td>' + getArrivalTime(guests[i].arrivalTime) + '</td><td>' + getAttendanceTime(guests[i].arrivalTime) + '</td><td>' + getPriceByTraffic(guests[i].arrivalTime) + ' рублей</td><td><button type=\"button\" onclick =\"releaseGuest(' + guests[i].number + ')\" id=\"guest_number_' + guests[i].number + '\">Стоп</button></td></tr>'; //<td><form id=\"' + guests[i].guest_number + '></form></td>
-			}
-			HTMLGuestsLogList +=  '</table>';
-			guestsLogList.innerHTML = HTMLGuestsLogList;
-			
-			var visitorsLogList = document.getElementById("visitors_log_list");
-			var HTMLVisitorsLogList = '<table border=\"1\"><tr><td>Номер гостя</td><td>Мероприятие</td><td>Время прибытия</td><td>Время присутствия</td><td>Стоимость</td><td>Остановить</td><tr>';
-			for (var i = 0; i < VISITORS_NUMB; i++) {
-					HTMLVisitorsLogList += '<tr><td>' + visitors[i].number + '</td><td>' + visitors[i].action + '</td><td>' + getArrivalTime(visitors[i].arrivalTime) + '</td><td>' + getAttendanceTime(visitors[i].arrivalTime) + '</td><td>' + visitors[i].price + ' рублей</td><td><button type=\"button\" onclick =\"releaseVisitor(' + i + ')\" id=\"visitorAction:' + visitors[i].action + '\">Стоп</button></td></tr>';
-			}
-			HTMLVisitorsLogList +=  '</table>';
-			visitorsLogList.innerHTML = HTMLVisitorsLogList;
-			setTodayDate();
-		}
-		
-		function getNumberOfVisitors() {
-			var maxNumber = 0;
-			for (var i = 0; i < VISITORS_NUMB; i++)
-				if (parseInt(visitors[i].number) > maxNumber)
-					maxNumber = parseInt(visitors[i].number);
-			
-			var request =  new XMLHttpRequest();
-			request.open('POST', '/allvisitors', false);
-			request.send(null);
-			var JSONVisitors = JSON.parse(request.responseText);
-			for (var i = 0; i < JSONVisitors.length; i++)
-				if (parseInt(JSONVisitors[i].number) > maxNumber)
-					maxNumber = parseInt(JSONVisitors[i].number);
-			return maxNumber + 1;
-		}
-		function getArrivalTime(time) {
-			var time_str;
-			var day = time.getDate();
-			if (day < 10)
-				day = '0' + day;
-			var month = time.getMonth() + 1;
-			if (month < 10)
-				month = '0' + month;
-			var hour = time.getHours();
-			if (hour < 10)
-				hour = '0' + hour;
-			var minutes = time.getMinutes();
-			if (minutes < 10)
-				minutes = '0' + minutes;
-			var seconds = time.getSeconds();
-			if (seconds < 10)
-				seconds = '0' + seconds;
-			time_str = day + "." + month + "." + time.getFullYear() + " " + hour + ":" + minutes + ":" + seconds;
-			return time_str;
-		}
-		function getAttendanceTime(time) {
-			var curTime = new Date();
-			var diffTime = curTime.getTime() - time.getTime();
-			var time_str;
-			var hour = Math.floor(diffTime / 1000 / 60 / 60) % 24;
-			if (hour < 10)
-				hour = '0' + hour;
-			var minutes = Math.floor(diffTime / 1000 / 60)  % 60;
-			if (minutes < 10)
-				minutes = '0' + minutes;
-			var seconds = Math.floor(diffTime / 1000) % 60;
-			if (seconds < 10)
-				seconds = '0' + seconds;
-			time_str = hour + ":" + minutes; //+ ":" + seconds;
-			return time_str;
-		}
-		function getTimeDifference(time1, time2) {
-			var diffTime = time2.getTime() - time1.getTime();
-			if (diffTime < 0)
-				diffTime *= -1;
-			var time_str;
-			var hour = Math.floor(diffTime / 1000 / 60 / 60) % 24;
-			if (hour < 10)
-				hour = '0' + hour;
-			var minutes = Math.floor(diffTime / 1000 / 60)  % 60;
-			if (minutes < 10)
-				minutes = '0' + minutes;
-			var seconds = Math.floor(diffTime / 1000) % 60;
-			if (seconds < 10)
-				seconds = '0' + seconds;
-			time_str = hour + ":" + minutes + ":" + seconds;
-			return time_str;
-		}
-		function getPriceByTraffic(arrivalTime) {
-			var curTime = new Date();
-			var diffTime = curTime.getTime() - arrivalTime.getTime();
-			var price = 1.5*(Math.floor(diffTime / 1000 / 60));
-			if (price < TODAY_MAXIMUM_CHECK)
-				return price;
-			else
-				return TODAY_MAXIMUM_CHECK;
-		}
-		
-		function getTodayGuests() {
-			GUESTS_NUMB = 0;
-			var guests = new Array();
-			var request =  new XMLHttpRequest();
-			request.open('POST', '/todayvisitorsbytariff', false);
-			request.send(null);
-			var JSONGuests = JSON.parse(request.responseText);
-			for (var i = 0; i < JSONGuests.length; i++) {
-				guests[GUESTS_NUMB] = new Object();
-				guests[GUESTS_NUMB].number = JSONGuests[i].number;
-				guests[GUESTS_NUMB].action = "Гость";
-				guests[GUESTS_NUMB].arrivalTime = new Date();
-				guests[GUESTS_NUMB].arrivalTime.setTime(parseInt(JSONGuests[i].arrivalTime));
-				GUESTS_NUMB++;
-			}
-			return guests;
-		}
-		function addGuest(guestSelector) {
-			var index = guestSelector.selectedIndex;
-			var guestNumb = parseInt(guestSelector[index].text);
-
-			var val = "Выберите номер";
-			var opts = guestSelector.options;
-			for (var opt, j = 0; opt = opts[j]; j++) {
-				if (opt.value == val) {
-					guestSelector.selectedIndex = j;
-					break;
-				}
-			}
-			/*Если мы пытаемся "выдать" гостю номерок, который мы выдали ранее другому гостю, то такой номерок не может быть выдан! He shall not pass! */
-			var guestExist = true;
-			for (var i = 0; i < GUESTS_NUMB; i++) {
-				if (guests[i].number == guestNumb) {
-					guestExist = false;
-					alert("Эй, негодник! Ты что, пытался выдать гостю номерок, который уже есть у другого гостя?!"); 
-					break;
-				}
-			}
-			if (guestExist == true) {
-				guests[GUESTS_NUMB] = new Object();
-				guests[GUESTS_NUMB].number = guestNumb;
-				guests[GUESTS_NUMB].arrivalTime = new Date();
-				
-				var guest = new Object();
-				guest.number = String(guests[GUESTS_NUMB].number);
-				guest.arrivalTime = guests[GUESTS_NUMB].arrivalTime.getTime();//getArrivalTime(guests[GUESTS_NUMB].arrivalTime);
-				
-				var request =  new XMLHttpRequest();
-				request.open('POST', '/addtodayguest', false);
-				request.send(JSON.stringify(guest));
-				alert("Отправляем серверу: " + JSON.stringify(guest));
-				alert("Ответ сервера: " + request.responseText);
-				GUESTS_NUMB++;
-			}
-			
-		}
-		function releaseGuest(guestNumber) {
-			var request =  new XMLHttpRequest();
-			request.open('POST', '/releaseguest/' + String(guestNumber), false);
-			request.send(null);
-			alert("Ответ сервера: " + request.responseText);
-			request = null;
-		
-			var newGuest = new Object();
-			var ind = 0;
-			for (var i = 0; i < GUESTS_NUMB; i++)
-				if (guests[i].number == guestNumber)
-				{
-					ind = i;
-					break;
-				}
-			newGuest.number = String(guests[ind].number);
-			newGuest.arrivalTime = String(guests[ind].arrivalTime.getTime());
-			newGuest.leavingTime = new Date();
-			newGuest.leavingTime =  String(newGuest.leavingTime.getTime());
-			newGuest.price = String(getPriceByTraffic(guests[ind].arrivalTime));
-			newGuest.action = "Guest";
-			var JSONNewGuest = JSON.stringify(newGuest);
-			request =  new XMLHttpRequest();
-			request.open('POST', '/addvisitor', false);
-			request.send(JSONNewGuest);
-			alert("Ответ сервера: " + request.responseText);
-			
-			for (var i = 0; i < GUESTS_NUMB; i++)
-				guests[i] = null;
-			guests = null;
-			
-			guests = getTodayGuests();
-		}
-
-		function addVisitor() {
-			var visitorPrices = document.getElementById("visitor_prices_list");
-			var priceIndex = visitorPrices.selectedIndex;
-			var price = visitorPrices[priceIndex].text;
-			if (price != "Выберите цену")
-				price = parseInt(price);
-
-			var visitorAction = document.getElementById("visitor_action_text");
-			var action = visitorAction.value;
-			
-			if (price != "Выберите цену" & action != "Мероприятие")
-			{
-				var val = "Выберите цену";
-				var opts = visitorPrices.options;
-				for (var opt, j = 0; opt = opts[j]; j++) {
-				if (opt.value == val) {
-					visitorPrices.selectedIndex = j;
-					break;
-					}
-				}
-				val = "Мероприятие";
-				visitorAction.value = val;
-				
-				visitors[VISITORS_NUMB] = new Object();
-				visitors[VISITORS_NUMB].number = numberOfVisitors;//VISITORS_NUMB+1;
-				visitors[VISITORS_NUMB].price = price;
-				visitors[VISITORS_NUMB].action = action;
-				visitors[VISITORS_NUMB].arrivalTime =  new Date();
-				numberOfVisitors++;
-				
-				var visitor = new Object();
-				visitor.number = String(visitors[VISITORS_NUMB].number);
-				visitor.arrivalTime = String(visitors[VISITORS_NUMB].arrivalTime.getTime());
-				visitor.action = String(visitors[VISITORS_NUMB].action);
-				visitor.price = String(visitors[VISITORS_NUMB].price);
-				
-				var request =  new XMLHttpRequest();
-				request.open('POST', '/addtodayvisitor', false);
-				
-				request.send(JSON.stringify(visitor));
-
-				alert("Отправляем серверу: " + JSON.stringify(visitor));
-				alert("Ответ сервера: " + request.responseText);
-				VISITORS_NUMB++;
-			}
-			else
-				alert("Не выбрана цена или не указано мероприятие!");
-
-			
-			/*Если мы пытаемся "выдать" гостю номерок, который мы выдали ранее другому гостю, то такой номерок не может быть выдан! He shall not pass! */
-			/*var guestExist = true;
-			for (var i = 0; i < GUESTS_NUMB; i++) {
-				if (guests[i].number == guestNumb) {
-					guestExist = false;
-					alert("Эй, негодник! Ты что, пытался выдать гостю номерок, который у другого гостя?!"); 
-					break;
-				}
-			}
-			if (guestExist == true) {
-				guests[GUESTS_NUMB] = new Object();
-				guests[GUESTS_NUMB].number = guestNumb;
-				guests[GUESTS_NUMB].arrivalTime = new Date();
-			}
-				/*var request =  new XMLHttpRequest();
-				request.open('POST', '/addguest', false);
-				request.send(JSON.stringify(visitor));
-				//alert("Отправляем серверу: " + JSON.stringify(visitor));
-				//alert("Ответ сервера: " + request.responseText);*/
-				//GUESTS_NUMB++;
-			
-		}
-		function getTodayVisitors() {
-			VISITORS_NUMB = 0;
-			var visitors = new Array();
-			var request =  new XMLHttpRequest();
-			request.open('POST', '/todayvisitors', false);
-			request.send(null);
-			var JSONVisitors = JSON.parse(request.responseText);
-			for (var i = 0; i < JSONVisitors.length; i++) {
-				visitors[VISITORS_NUMB] = new Object();
-				visitors[VISITORS_NUMB].number = parseInt(JSONVisitors[i].number);
-				visitors[VISITORS_NUMB].price = parseInt(JSONVisitors[i].price);
-				visitors[VISITORS_NUMB].action = JSONVisitors[i].action;
-				visitors[VISITORS_NUMB].arrivalTime = new Date();
-				visitors[VISITORS_NUMB].arrivalTime.setTime(parseInt(JSONVisitors[i].arrivalTime));
-				VISITORS_NUMB++;
-			}
-			return visitors;
-		}
-		function releaseVisitor(visitorIndex) {
-			var visitor = visitors[visitorIndex];
-			
-			var request = new XMLHttpRequest();
-			request.open('POST', '/releasevisitor/' + String(visitors[visitorIndex].number) + ',' + String(visitors[visitorIndex].action), false);
-			request.send(null);
-			alert("Ответ сервера: " + request.responseText);
-			request = null;
-			
-			var newVisitor = new Object();
-			newVisitor.number = String(visitors[visitorIndex].number);
-			newVisitor.action = String(visitors[visitorIndex].action);
-			newVisitor.arrivalTime = String(visitors[visitorIndex].arrivalTime.getTime());
-			newVisitor.leavingTime = new Date();
-			newVisitor.leavingTime = String(newVisitor.leavingTime.getTime());
-			newVisitor.price =  String(visitors[visitorIndex].price);
-			
-			request = new XMLHttpRequest();
-			request.open('POST', '/addvisitor', false);
-			request.send(JSON.stringify(newVisitor));
-			alert("Ответ сервера: " + request.responseText);
-			
-			for (var i = 0; i < VISITORS_NUMB; i++)
-				visitors[i] = null;
-			visitors = null;
-			visitors = getTodayVisitors();
-		}
-		
-		function setNumbersOptions() {
-			numbers = new Array();
-			for (var i = 0; i < 45; i++) {
-				numbers[i] = new Object();
-				numbers[i].free = true;
-				numbers[i].number = i+55;
-				var guestNumbersSelector = document.getElementById("visitor_prices_list");
-				var option = document.createElement("option");
-				option.text = numbers[i].number;
-				guest_numbers_list.add(option);
-			}
-		}
-		function setPriceOptions() {
-			for (var i = 3; i <= 20; i++) {
-				var priceSelector = document.getElementById("visitor_prices_list");
-				var option = document.createElement("option");
-				option.text = i*50;
-				priceSelector.add(option);
-			}
-		}
-		function getTodayMaxCheck() {
-			/* Берется сегодняшняя дата. 
-			Скрипт, в котором делается поиск этой даты в таблице Checks. 
-			Если запись в таблице найдена, берется цена из записи в таблице, иначе 350.*/
-			var anotherTodayCheckExist = false;
-			if (anotherTodayCheckExist)
-			{
-				return 150;
-			}
-			else
-				return 350;
-		}
-		function setTodayDate() {
-			var date = new Date();
-			var todayIs = document.getElementById("todayIs");
-			//alert(todayIs);
-			todayIs.innerHTML = date.toLocaleDateString() + " " + date.toTimeString();
-		}
-	</script>-->
 </body>
 </html>
